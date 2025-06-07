@@ -9,7 +9,7 @@ parameters:
     - routes
     - resources/views
 
-  excludes_analyse:
+  excludePaths:
     - vendor
 
   inferPrivatePropertyTypeFromConstructor: true
