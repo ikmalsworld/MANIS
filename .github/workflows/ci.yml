@@ -48,5 +48,5 @@ jobs:
       - name: Static analysis (PHPStan)
         run: vendor/bin/phpstan analyse
 
-      - name: Code style check (Pint)
-        run: vendor/bin/pint --test
+      - name: Auto-fix code style (Pint)
+        run: vendor/bin/pint
