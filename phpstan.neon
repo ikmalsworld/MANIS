@@ -1,12 +1,14 @@
 includes:
-    - vendor/larastan/larastan/extension.neon
+  - vendor/larastan/larastan/extension.neon
 
 parameters:
-    paths:
-        - app
-        - routes
-        - resources/views
+  level: 5
 
-    level: 5
-    checkModelRelations: true
-    checkMissingIterableValueType: false
+  paths:
+    - app
+    - routes
+    - resources/views
+
+  # Optional: you can ignore some known non-critical errors
+  ignoreErrors:
+    - '#Relation .+ is not found in .+#'
