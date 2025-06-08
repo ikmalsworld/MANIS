@@ -96,8 +96,8 @@ jobs:
       - name: Log in to GitHub Container Registry
         run: echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.repository_owner }}/manis:latest .
+      - name: Build Docker image (no cache)
+        run: docker build --no-cache -t ghcr.io/${{ github.repository_owner }}/manis:latest .
 
       - name: Push Docker image
         run: docker push ghcr.io/${{ github.repository_owner }}/manis:latest
@@ -117,13 +117,18 @@ jobs:
           script: |
             cd /home/ubuntu/manis
 
-            # Login to GitHub Container Registry
+            # Log in to GHCR
             docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GHCR_PAT }}
 
-            # Pull latest image from GHCR
+            # Pull the latest image
             docker pull ghcr.io/${{ github.repository_owner }}/manis:latest
 
+            # Restart containers
+            docker-compose -f docker-compose-prod.yml down || true
+            docker-compose -f docker-compose-prod.yml up -d
+
+            # Post-deploy Laravel commands
             docker exec laravel-app php artisan migrate --force
+            docker exec laravel-app php artisan view:clear
             docker exec laravel-app php artisan config:cache
             docker exec laravel-app php artisan route:cache
-
