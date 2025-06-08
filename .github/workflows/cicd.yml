@@ -108,23 +108,23 @@ jobs:
     needs: docker
 
     steps:
-      name: Deploy via SSH
-      uses: appleboy/ssh-action@v0.1.10
-      with:
-        host: ${{ secrets.PROD_HOST }}
-        username: ${{ secrets.PROD_USER }}
-        key: ${{ secrets.PROD_SSH_KEY }}
-        script: |
-          cd /home/ubuntu/manis
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USER }}
+          key: ${{ secrets.PROD_SSH_KEY }}
+          script: |
+            cd /home/ubuntu/manis
 
-          # Login to GitHub Container Registry
-          docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GHCR_PAT }}
+            # Login to GitHub Container Registry
+            docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GHCR_PAT }}
 
-          # Pull latest image from GHCR
-          docker pull ghcr.io/${{ github.repository_owner }}/manis:latest
+            # Pull latest image from GHCR
+            docker pull ghcr.io/${{ github.repository_owner }}/manis:latest
 
-          # Stop and remove existing containers cleanly
-          docker compose -f docker-compose.prod.yml down || true
+            # Stop and remove existing containers cleanly
+            docker compose -f docker-compose.prod.yml down || true
 
-          # Start with the new image
-          docker compose -f docker-compose.prod.yml up -d --build
+            # Start with the new image
+            docker compose -f docker-compose.prod.yml up -d --build
