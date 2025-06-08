@@ -26,7 +26,7 @@ ENV APP_ENV=production
 
 # Generate app key (only if .env is present and needed)
 # You may comment this if you have your .env baked or provided externally
-# RUN cp .env.example .env && php artisan key:generate
+RUN cp .env.example .env && php artisan key:generate
 
 EXPOSE 80
 
