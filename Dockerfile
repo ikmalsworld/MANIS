@@ -14,6 +14,9 @@ WORKDIR /var/www
 # Copy application code
 COPY . .
 
+# Copy your production environment file as .env
+COPY .env.production .env
+
 # Install PHP dependencies
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
@@ -21,14 +24,10 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 755 /var/www/storage /var/www/bootstrap/cache
 
-# Set environment
+# Set environment variable (optional, since .env is present)
 ENV APP_ENV=production
-
-# Generate app key (only if .env is present and needed)
-# You may comment this if you have your .env baked or provided externally
-RUN cp .env.example .env && php artisan key:generate
 
 EXPOSE 80
 
-# Start Laravel (still using PHP's built-in server for simplicity)
+# Start Laravel's built-in server
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80"]
