@@ -97,7 +97,10 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17'  # Use Java 17 here
+          java-version: '17'  # Java 17 required
+
+      - name: Verify Java version
+        run: java -version
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
@@ -112,7 +115,9 @@ jobs:
         run: |
           curl -sSLo sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
           unzip sonar-scanner-cli.zip
+          echo "##vso[task.prependpath]$(pwd)/sonar-scanner-4.8.0.2856-linux/bin"  # for Azure DevOps; in GitHub, we'll just add it to PATH
           export PATH=$(pwd)/sonar-scanner-4.8.0.2856-linux/bin:$PATH
+          sonar-scanner --version
 
       - name: Run SonarCloud Scanner
         env:
@@ -124,7 +129,6 @@ jobs:
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=$SONAR_TOKEN \
             -Dsonar.php.coverage.reportPaths=coverage.xml
-
 
   docker:
     name: 📦 Build & Push Docker Image
