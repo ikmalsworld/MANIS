@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-  <h1><span style="color:#5d9cff; font-weight:bold;">MAN</span><span style="font-weight:bold;">IS <span style="color:#5d9cff; font-weight:300;"> ------- <span style="color:#5d9cff; font-weight:300;">Management <span style="color:#ffffff; font-weight:300;">for Inventory and Sales</span></span></h1>
+  <h1><span style="color:#5d9cff; font-weight:bold;">MAN</span><span style="font-weight:bold;">IS <span style="color:#5d9cff; font-weight:300;"> ------- <span style="color:#5d9cff; font-weight:300;">Management <span style="color:#ffffff; font-weight:300;">for Inventory and Sales Test</span></span></h1>
 
   <a href="{{ route('transactions.index') }}" class="riwayat-btn">Riwayat</a>
 
