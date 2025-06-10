@@ -1,6 +1,6 @@
 <?php
 
-$defaultLogPath = storage_path('logs/laravel.log');
+$defaultLogPath = 'logs/laravel.log';
 
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
