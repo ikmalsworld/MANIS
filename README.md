@@ -93,10 +93,10 @@ vendor/bin/phpcs
 
 👥 Tim Pengembang
 Nama Lengkap	      
-Muhammad Hasan Kamal
-Thariq Kemal Hassan     
-Muhammad Afaf	        
-Muhammad Yusuf P       
+1. Muhammad Hasan Kamal
+2. Thariq Kemal Hassan     
+3. Muhammad Afaf	        
+4. Muhammad Yusuf P       
 
 🗺️ Rencana Pengembangan (Roadmap)
 - Monitoring Barang Masuk
