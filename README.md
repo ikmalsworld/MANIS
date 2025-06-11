@@ -93,7 +93,7 @@ vendor/bin/phpcs
 
 👥 Tim Pengembang
 Nama Lengkap	      
-Muhammad Hasan Kamal	
+Muhammad Hasan Kamal
 Thariq Kemal Hassan     
 Muhammad Afaf	        
 Muhammad Yusuf P       
