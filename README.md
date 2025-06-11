@@ -52,7 +52,7 @@ npm install && npm run dev
 
 ### 3. Copy dan Konfigurasi .env
 ```bash
-cp .env.production .env
+cp .env.example .env
 ```
 Edit file .env untuk mengatur koneksi database, lalu:
 ```bash
