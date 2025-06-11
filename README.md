@@ -91,8 +91,7 @@ vendor/bin/phpstan analyse
 vendor/bin/phpcs
 ```
 
-👥 Tim Pengembang
-Nama Lengkap	      
+👥 Tim Pengembang	      
 1. Muhammad Hasan Kamal
 2. Thariq Kemal Hassan     
 3. Muhammad Afaf	        
