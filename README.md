@@ -98,9 +98,6 @@ Nama Lengkap
 3. Muhammad Afaf	        
 4. Muhammad Yusuf P       
 
-🗺️ Rencana Pengembangan (Roadmap)
-- Monitoring Barang Masuk
-
 📄 Lisensi
 Proyek ini menggunakan lisensi MIT License.
 
