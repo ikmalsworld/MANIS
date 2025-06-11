@@ -92,11 +92,11 @@ vendor/bin/phpcs
 ```
 
 👥 Tim Pengembang
-Nama Lengkap	        NIM	            Peran
-Muhammad Hasan Kamal	1234567890	    Backend & CI/CD
-Thariq Kemal Hassan     ...	            Frontend & UI
-Muhammad Afaf	        ...	            Database
-Muhammad Yusuf P        ...             Dokumentasi
+Nama Lengkap	      
+Muhammad Hasan Kamal	
+Thariq Kemal Hassan     
+Muhammad Afaf	        
+Muhammad Yusuf P       
 
 🗺️ Rencana Pengembangan (Roadmap)
 - Monitoring Barang Masuk
