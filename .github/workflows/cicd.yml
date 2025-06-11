@@ -47,7 +47,7 @@ jobs:
         run: php artisan migrate --force --env=testing
 
       - name: Run tests with coverage
-        run: php artisan test --env=testing --coverage-clover=coverage.xml
+        run: php artisan test --env=testing --coverage-clover=coverage.xml --configuration=phpunit.xml
 
   phpstan:
     name: 🧠 Static Analysis (PHPStan)
