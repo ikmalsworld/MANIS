@@ -52,7 +52,7 @@ npm install && npm run dev
 
 ### 3. Copy dan Konfigurasi .env
 ```bash
-cp .env.example .env
+cp .env.production .env
 ```
 Edit file .env untuk mengatur koneksi database, lalu:
 ```bash
@@ -70,7 +70,7 @@ php artisan migrate --seed
 ```bash
 php artisan serve
 ```
-Buka browser: http://localhost:8000
+Buka browser: http://localhost:8001
 
 📊 Fitur Monitoring Barang
 Route: /monitoring-barang
