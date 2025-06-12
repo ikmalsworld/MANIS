@@ -70,7 +70,7 @@ php artisan migrate --seed
 ```bash
 php artisan serve
 ```
-Buka browser: http://localhost:8000
+Buka browser: http://localhost:8001
 
 📊 Fitur Monitoring Barang
 Route: /monitoring-barang
@@ -91,8 +91,7 @@ vendor/bin/phpstan analyse
 vendor/bin/phpcs
 ```
 
-👥 Tim Pengembang
-Nama Lengkap	      
+👥 Tim Pengembang	      
 1. Muhammad Hasan Kamal
 2. Thariq Kemal Hassan     
 3. Muhammad Afaf	        
