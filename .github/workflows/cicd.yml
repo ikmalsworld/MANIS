@@ -49,6 +49,12 @@ jobs:
       - name: Run tests with coverage
         run: php artisan test --env=testing --coverage-clover=coverage.xml
 
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage.xml
+
   phpstan:
     name: 🧠 Static Analysis (PHPStan)
     runs-on: ubuntu-latest
@@ -96,6 +102,11 @@ jobs:
       - name: Install PHP dependencies
         run: composer install --prefer-dist --no-progress
 
+      - name: Download coverage report
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-report
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
         with:
@@ -106,7 +117,6 @@ jobs:
             -Dsonar.php.coverage.reportPaths=coverage.xml
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
 
   docker:
     name: 📦 Build & Push Docker Image
