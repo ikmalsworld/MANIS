@@ -14,7 +14,7 @@
         </testsuite>
     </testsuites>
 
-    <coverage processUncoveredFiles="true">
+    <coverage>
         <report>
             <clover outputFile="coverage.xml"/>
         </report>
