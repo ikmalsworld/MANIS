@@ -11,35 +11,43 @@ jobs:
     name: ✅ Laravel Tests
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: laravel
+          MYSQL_USER: laravel
+          MYSQL_PASSWORD: secret
+          MYSQL_ROOT_PASSWORD: root
+        ports: ['3306:3306']
+        options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Log in to GitHub Container Registry
-        run: echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, pdo_mysql
+          coverage: xdebug
 
-      - name: Build Docker images (no cache)
-        run: docker compose -f docker-compose.yml build --no-cache
-
-      - name: Start Docker Compose
-        run: docker compose -f docker-compose.yml up -d
-
-      - name: Wait for MySQL to be ready
-        run: docker compose exec app bash -c "until mysqladmin ping -h db --silent; do sleep 1; done"
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
 
       - name: Prepare environment
-        run: docker compose exec app bash -c "cp .env.testing .env && php artisan key:generate --env=testing"
+        run: |
+          cp .env.testing .env
+          php artisan key:generate --env=testing
+
+      - name: Wait for MySQL
+        run: sleep 15
 
       - name: Run migrations
-        run: docker compose exec app php artisan migrate --force --env=testing
+        run: php artisan migrate --force --env=testing
 
       - name: Run tests with coverage
-        run: docker compose exec app php artisan test --env=testing --coverage-clover=storage/coverage.xml
-
-      - name: Upload coverage report
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-report
-          path: storage/coverage.xml
+        run: php artisan test --env=testing --coverage-clover=coverage.xml
 
   phpstan:
     name: 🧠 Static Analysis (PHPStan)
@@ -88,11 +96,6 @@ jobs:
       - name: Install PHP dependencies
         run: composer install --prefer-dist --no-progress
 
-      - name: Download coverage report
-        uses: actions/download-artifact@v4
-        with:
-          name: coverage-report
-
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
         with:
@@ -100,9 +103,10 @@ jobs:
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
             -Dsonar.organization=${{ secrets.SONAR_ORG }}
             -Dsonar.token=${{ secrets.SONAR_TOKEN }}
-            -Dsonar.php.coverage.reportPaths=storage/coverage.xml
+            -Dsonar.php.coverage.reportPaths=coverage.xml
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
 
   docker:
     name: 📦 Build & Push Docker Image
