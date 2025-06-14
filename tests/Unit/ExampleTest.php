@@ -1,25 +1,43 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature;
 
-use PHPUnit\Framework\TestCase;
-use App\Http\Controllers\StockController;
-use App\Http\Controllers\TransactionController;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+use App\Models\Product;
 
 class ExampleTest extends TestCase
 {
+    use RefreshDatabase;
+
     /** @test */
-    public function stock_controller_has_expected_methods()
+    public function index_displays_products()
     {
-        $this->assertTrue(method_exists(StockController::class, 'index'));
-        $this->assertTrue(method_exists(StockController::class, 'store'));
-        $this->assertTrue(method_exists(StockController::class, 'adjust'));
-        $this->assertTrue(method_exists(StockController::class, 'destroy'));
+        Product::factory()->create(['name' => 'TestProduct']);
+        $response = $this->get('/');
+        $response->assertStatus(200);
+        $response->assertSee('TestProduct');
     }
 
     /** @test */
-    public function transaction_controller_has_index_method()
+    public function store_creates_product()
     {
-        $this->assertTrue(method_exists(TransactionController::class, 'index'));
+        $response = $this->post('/store', [
+            'name' => 'New Product',
+            'quantity' => 10,
+        ]);
+
+        $response->assertRedirect('/');
+        $this->assertDatabaseHas('products', [
+            'name' => 'New Product',
+            'quantity' => 10,
+        ]);
+    }
+
+    /** @test */
+    public function transaction_index_returns_success()
+    {
+        $response = $this->get('/transactions');
+        $response->assertStatus(200);
     }
 }
