@@ -7,7 +7,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Product;
 
-class ExampleTest extends TestCase
+class FeatureTest extends TestCase
 {
     use RefreshDatabase;
 
