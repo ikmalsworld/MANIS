@@ -96,6 +96,9 @@ jobs:
       - name: Install PHP dependencies
         run: composer install --prefer-dist --no-progress
 
+      - name: Check Xdebug
+        run: php -v
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
         with:
