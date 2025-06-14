@@ -48,13 +48,13 @@ jobs:
 
       - name: Generate ProductFactory
         run: |
-          php artisan make:factory ProductFactory --model=Product
+          mkdir -p database/factories
           echo "<?php
 
-          namespace Database\Factories;
+          namespace Database\\Factories;
 
-          use App\Models\Product;
-          use Illuminate\Database\Eloquent\Factories\Factory;
+          use App\\Models\\Product;
+          use Illuminate\\Database\\Eloquent\\Factories\\Factory;
 
           class ProductFactory extends Factory
           {
@@ -114,11 +114,7 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
         with:
-          args: >
-            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
-            -Dsonar.organization=${{ secrets.SONAR_ORG }}
-            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
-            -Dsonar.php.coverage.reportPaths=coverage.xml
+          projectBaseDir: .
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
