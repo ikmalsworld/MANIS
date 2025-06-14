@@ -20,9 +20,10 @@ class UnitTest extends TestCase
     }
 
     /** @test */
+/** @test */
     public function store_creates_product()
     {
-        $response = $this->post('/store', [
+        $response = $this->post(route('stocks.store'), [
             'name' => 'New Product',
             'quantity' => 10,
         ]);
