@@ -114,19 +114,19 @@ Tempat inti aplikasi Laravel:
 
 
 2. bootstrap/
-   Mengatur autoload dan bootstrapping Laravel, biasanya hanya app.php.
-4. config/
-   Berisi konfigurasi Laravel seperti app.php, database.php, mail.php, dll.
-6. database/
+- Mengatur autoload dan bootstrapping Laravel, biasanya hanya app.php.
+3. config/
+- Berisi konfigurasi Laravel seperti app.php, database.php, mail.php, dll.
+4. database/
 - **factories/, migrations/, seeders/:** Untuk database migration, seeding, dan pembuatan dummy data.
 
 
 5. public/
-   Folder web root. Berisi index.php, asset publik (gambar, JS/CSS hasil build).
-7. resources/
-   Berisi view (Blade templates), asset mentah (JS/CSS/SASS), dan file lokalization/lang.
-9. routes/
-    Definisi routing Laravel, umumnya file:
+- Folder web root. Berisi index.php, asset publik (gambar, JS/CSS hasil build).
+6. resources/
+- Berisi view (Blade templates), asset mentah (JS/CSS/SASS), dan file lokalization/lang.
+7. routes/
+- Definisi routing Laravel, umumnya file:
 - **web.php:** Routing untuk aplikasi web.
 
 
