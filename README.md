@@ -69,48 +69,48 @@ MANIS-main/
 
 
 ### Konfigurasi dan Root Files
-**.editorconfig, .gitattributes, .gitignore:** File konfigurasi umum untuk editor, Git, dan atribut file.
+- **.editorconfig, .gitattributes, .gitignore:** File konfigurasi umum untuk editor, Git, dan atribut file.
 
 
-**.env.example, .env.production, .env.testing:** Contoh dan versi environment variables untuk berbagai lingkungan.
+- **.env.example, .env.production, .env.testing:** Contoh dan versi environment variables untuk berbagai lingkungan.
 
 
-**Dockerfile, docker-compose.yml, docker-compose-prod.yml:** Digunakan untuk containerisasi dengan Docker.
+- **Dockerfile, docker-compose.yml, docker-compose-prod.yml:** Digunakan untuk containerisasi dengan Docker.
 
 
-**README.md:** Dokumentasi proyek.
+- **README.md:** Dokumentasi proyek.
 
 
-**artisan:** CLI tool Laravel (untuk menjalankan perintah seperti php artisan migrate, serve, dll.).
+- **artisan:** CLI tool Laravel (untuk menjalankan perintah seperti php artisan migrate, serve, dll.).
 
 
-**composer.json, composer.lock:** Dependency manager untuk PHP (Composer).
+- **composer.json, composer.lock:** Dependency manager untuk PHP (Composer).
 
 
-**package.json:** Dependency untuk Node.js (umumnya untuk frontend asset via Vite atau Laravel Mix).
+- **package.json:** Dependency untuk Node.js (umumnya untuk frontend asset via Vite atau Laravel Mix).
 
 
-**phpunit.xml:** Konfigurasi untuk testing dengan PHPUnit.
+- **phpunit.xml:** Konfigurasi untuk testing dengan PHPUnit.
 
 
-**phpstan.neon:** Konfigurasi untuk PHPStan (static analysis).
+- **phpstan.neon:** Konfigurasi untuk PHPStan (static analysis).
 
 
-**vite.config.js:** Konfigurasi bundler frontend Vite.
+- **vite.config.js:** Konfigurasi bundler frontend Vite.
 
 
-**sonar-project.properties:** Konfigurasi untuk SonarCloud (code analysis).
+- **sonar-project.properties:** Konfigurasi untuk SonarCloud (code analysis).
 
 ### Folder-Folder Utama
 1. app/
 Tempat inti aplikasi Laravel:
-**Http/:** Controller dan middleware.
+- **Http/:** Controller dan middleware.
 
 
-**Models/:** Model-model database.
+- **Models/:** Model-model database.
 
 
-**Providers/:** Service providers Laravel.
+- **Providers/:** Service providers Laravel.
 
 
 2. bootstrap/
@@ -118,7 +118,7 @@ Mengatur autoload dan bootstrapping Laravel, biasanya hanya app.php.
 3. config/
 Berisi konfigurasi Laravel seperti app.php, database.php, mail.php, dll.
 4. database/
-**factories/, migrations/, seeders/:** Untuk database migration, seeding, dan pembuatan dummy data.
+- **factories/, migrations/, seeders/:** Untuk database migration, seeding, dan pembuatan dummy data.
 
 
 5. public/
@@ -127,26 +127,26 @@ Folder web root. Berisi index.php, asset publik (gambar, JS/CSS hasil build).
 Berisi view (Blade templates), asset mentah (JS/CSS/SASS), dan file lokalization/lang.
 7. routes/
 Definisi routing Laravel, umumnya file:
-**web.php:** Routing untuk aplikasi web.
+- **web.php:** Routing untuk aplikasi web.
 
 
-**api.php:** Routing untuk API.
+- **api.php:** Routing untuk API.
 
 
-**console.php, channels.php:** Routing tambahan untuk CLI/event broadcasting.
+- **console.php, channels.php:** Routing tambahan untuk CLI/event broadcasting.
 
 
 8. storage/
 Berisi log, cache, dan file upload.
-**app/, logs/, framework/:** Digunakan Laravel secara internal.
+- **app/, logs/, framework/:** Digunakan Laravel secara internal.
 
 
 9. tests/
 Folder untuk testing.
-**Feature/:** Test dari end-to-end fitur.
+- **Feature/:** Test dari end-to-end fitur.
 
 
-Unit/: Test unit-level.
+- **Unit/:** Test unit-level.
 10. laravel/
 
 ---
