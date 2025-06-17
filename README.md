@@ -5,6 +5,32 @@
 
 ---
 
+- Frontend, Backend, and Database
+[![Laravel](https://img.shields.io/badge/Laravel-FF2D20?logo=laravel&logoColor=white)](https://laravel.com/)
+[![MySQL](https://img.shields.io/badge/MySQL-00758F?logo=mysql&logoColor=white)](https://www.mysql.com/)
+
+- Version Control
+[![GitHub Stars](https://img.shields.io/github/stars/ikmalsworld/MANIS?style=social)](https://github.com/ikmalsworld/MANIS/stargazers)
+
+- CI/CD
+[![Laravel CI/CD](https://img.shields.io/badge/CI/CD-GitHub%20Actions-brightgreen?logo=github-actions)](https://github.com/ikmalsworld/MANIS/actions/workflows/cicd.yml) 
+
+
+- Devops Tools
+[![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ikmalsworld_MANIS&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ikmalsworld_MANIS)
+
+[![PHPStan Status](https://img.shields.io/badge/PHPStan-passing-success?logo=php)]
+
+[![Code Style](https://img.shields.io/badge/Laravel_Pint-clean-blue?logo=laravel)]
+
+[![License](https://img.shields.io/github/license/ikmalsworld/MANIS)](https://github.com/ikmalsworld/MANIS/blob/main/LICENSE)
+
+[![Deployment](https://img.shields.io/badge/Deployed_on-AWS_EC2-orange?logo=amazon-aws)]
+
+---
+
 ## 📸 Tampilan Antarmuka
 ![Screenshot 2025-06-11 184336](https://github.com/user-attachments/assets/2d71867b-2021-4e40-b254-3c3944474516)
 ![Screenshot 2025-06-11 194442](https://github.com/user-attachments/assets/d39c8172-75ac-4538-a774-42ed1f20eeb0)
