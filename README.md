@@ -8,36 +8,36 @@
 ### Day1
 Database tidak otomatis migrate dari local php ke docker, sehingga harus force di actions.
 
-![Image](https://github.com/user-attachments/assets/26b53e2f-5609-4eed-b460-2571bc1d692c)
+![Image](https://github.com/user-attachments/assets/cf9cd328-b613-4b8d-96f8-093055ffadc3)
 
-https://github.com/ikmalsworld/MANIS/issues/6#issue-3154949217
+![Image](https://github.com/user-attachments/assets/26b53e2f-5609-4eed-b460-2571bc1d692c)
 
 ### Day2
 - Perlu menerapkan CD, payment method di GCP problematik sehingga harus mengganti dengan AWS.
 - Deployment ke EC2 AWS tidak berjalan lancar, solusinya dengan reset EC2.
 
-https://github.com/ikmalsworld/MANIS/issues/7#issue-3154955785
+![Image](https://github.com/user-attachments/assets/9fa78bc8-b618-47d5-ab3c-c91bae9d4748)
 
-https://github.com/ikmalsworld/MANIS/issues/8#issue-3154958997
+![Image](https://github.com/user-attachments/assets/5bdabb01-502f-4344-8911-7122311272c0)
 
-https://github.com/ikmalsworld/MANIS/issues/9#issue-3154960283
+![Image](https://github.com/user-attachments/assets/697355dd-f99d-466d-aa72-fa8c56b1db92)
 
 ### Day3
 Sonarcloud preferred, karena lebih praktis setup dan penggunaannya.
 
-https://github.com/ikmalsworld/MANIS/issues/10#issue-3154966774
+![Image](https://github.com/user-attachments/assets/3ad2e86b-dcd9-4c18-a31a-22f8b8bc7190)
 
-https://github.com/ikmalsworld/MANIS/issues/11#issue-3154969314
+![Image](https://github.com/user-attachments/assets/3676aab2-612b-4838-96ef-8665a58b1f6d)
 
-https://github.com/ikmalsworld/MANIS/issues/12#issue-3154971154
+![Image](https://github.com/user-attachments/assets/e799cf24-6eb3-4c01-bfac-c6ee07fec07d)
 
 ### Day4
 - Integrasi Prometheus Grafana membuat Sonarcloud Quality Test gagal, 0% passed.
 - Debugging Prometheus Grafana tidak berhasil, Radis dan APCU tidak kompatibel dengan PHP 8.2, perlu alternatif, solusinya Cloudwatch + SNS.
 
-https://github.com/ikmalsworld/MANIS/issues/13#issue-3154972885
+![Image](https://github.com/user-attachments/assets/8df8e357-072d-4add-af62-61a41f5dfe12)
 
-https://github.com/ikmalsworld/MANIS/issues/14#issue-3154974455
+![Image](https://github.com/user-attachments/assets/75686c8c-9aac-45fd-97f9-a356ad40a6d8)
 
 ---
 
