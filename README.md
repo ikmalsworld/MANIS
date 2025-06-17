@@ -4,6 +4,218 @@
 `MANIS` adalah aplikasi berbasis Laravel yang dirancang untuk membantu memantau data barang, stok, dan aktivitas penambahan barang baru secara real-time. Aplikasi ini dikembangkan oleh tim kami sebagai bagian dari proyek sistem informasi modern dengan praktik CI/CD dan clean code.
 
 ---
+## Challenges Encountered
+### Day1
+Database tidak otomatis migrate dari local php ke docker, sehingga harus force di actions.
+
+https://github.com/ikmalsworld/MANIS/issues/5#issue-3154945616
+
+https://github.com/ikmalsworld/MANIS/issues/6#issue-3154949217
+
+### Day2
+- Perlu menerapkan CD, payment method di GCP problematik sehingga harus mengganti dengan AWS.
+- Deployment ke EC2 AWS tidak berjalan lancar, solusinya dengan reset EC2.
+
+https://github.com/ikmalsworld/MANIS/issues/7#issue-3154955785
+
+https://github.com/ikmalsworld/MANIS/issues/8#issue-3154958997
+
+https://github.com/ikmalsworld/MANIS/issues/9#issue-3154960283
+
+### Day3
+Sonarcloud preferred, karena lebih praktis setup dan penggunaannya.
+
+https://github.com/ikmalsworld/MANIS/issues/10#issue-3154966774
+
+https://github.com/ikmalsworld/MANIS/issues/11#issue-3154969314
+
+https://github.com/ikmalsworld/MANIS/issues/12#issue-3154971154
+
+### Day4
+- Integrasi Prometheus Grafana membuat Sonarcloud Quality Test gagal, 0% passed.
+- Debugging Prometheus Grafana tidak berhasil, Radis dan APCU tidak kompatibel dengan PHP 8.2, perlu alternatif, solusinya Cloudwatch + SNS.
+
+https://github.com/ikmalsworld/MANIS/issues/13#issue-3154972885
+
+https://github.com/ikmalsworld/MANIS/issues/14#issue-3154974455
+
+---
+
+## Struktur Proyek
+### Struktur file
+MANIS-main/
+├── .editorconfig
+├── .env.example
+├── .env.production
+├── .env.testing
+├── .gitattributes
+├── .gitignore
+├── .php-cs-fixer.dist.php
+├── .phpmd.xml
+├── .phpstan.dist.neon
+├── .styleci.yml
+├── artisan
+├── composer.json
+├── composer.lock
+├── docker-compose-prod.yml
+├── docker-compose.yml
+├── Dockerfile
+├── phpunit.xml
+├── sonar-project.properties
+├── vite.config.js
+├── README.md
+│
+├── app/
+│   ├── Console/
+│   ├── Exceptions/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   ├── Middleware/
+│   ├── Models/
+│   ├── Providers/
+│
+├── bootstrap/
+│   └── app.php
+│
+├── config/
+│   ├── app.php
+│   ├── auth.php
+│   ├── broadcasting.php
+│   ├── cache.php
+│   ├── cors.php
+│   ├── database.php
+│   ├── filesystems.php
+│   ├── hashing.php
+│   ├── logging.php
+│   ├── mail.php
+│   ├── queue.php
+│   ├── services.php
+│   ├── session.php
+│   ├── view.php
+│
+├── database/
+│   ├── factories/
+│   ├── migrations/
+│   ├── seeders/
+│
+├── lang/
+│   └── en/
+│       └── validation.php
+│
+├── laravel/   ← (folder ini tidak umum, kemungkinan custom. Perlu dicek isinya lebih lanjut)
+│
+├── public/
+│   ├── index.php
+│   └── (favicon, assets publik)
+│
+├── resources/
+│   ├── css/
+│   ├── js/
+│   ├── lang/
+│   └── views/
+│       ├── layouts/
+│       └── welcome.blade.php (atau lainnya)
+│
+├── routes/
+│   ├── api.php
+│   ├── channels.php
+│   ├── console.php
+│   └── web.php
+│
+├── storage/
+│   ├── app/
+│   ├── framework/
+│   │   ├── cache/
+│   │   ├── sessions/
+│   │   ├── views/
+│   └── logs/
+│
+├── tests/
+    ├── Feature/
+    └── Unit/
+
+### Konfigurasi dan Root Files
+**.editorconfig, .gitattributes, .gitignore:** File konfigurasi umum untuk editor, Git, dan atribut file.
+
+
+**.env.example, .env.production, .env.testing:** Contoh dan versi environment variables untuk berbagai lingkungan.
+
+
+**Dockerfile, docker-compose.yml, docker-compose-prod.yml:** Digunakan untuk containerisasi dengan Docker.
+
+
+**README.md:** Dokumentasi proyek.
+
+
+**artisan:** CLI tool Laravel (untuk menjalankan perintah seperti php artisan migrate, serve, dll.).
+
+
+**composer.json, composer.lock:** Dependency manager untuk PHP (Composer).
+
+
+**package.json:** Dependency untuk Node.js (umumnya untuk frontend asset via Vite atau Laravel Mix).
+
+
+**phpunit.xml:** Konfigurasi untuk testing dengan PHPUnit.
+
+
+**phpstan.neon:** Konfigurasi untuk PHPStan (static analysis).
+
+
+**vite.config.js:** Konfigurasi bundler frontend Vite.
+
+
+**sonar-project.properties:** Konfigurasi untuk SonarCloud (code analysis).
+
+### Folder-Folder Utama
+1. app/
+Tempat inti aplikasi Laravel:
+**Http/:** Controller dan middleware.
+
+
+**Models/:** Model-model database.
+
+
+**Providers/:** Service providers Laravel.
+
+
+2. bootstrap/
+Mengatur autoload dan bootstrapping Laravel, biasanya hanya app.php.
+3. config/
+Berisi konfigurasi Laravel seperti app.php, database.php, mail.php, dll.
+4. database/
+**factories/, migrations/, seeders/:** Untuk database migration, seeding, dan pembuatan dummy data.
+
+
+5. public/
+Folder web root. Berisi index.php, asset publik (gambar, JS/CSS hasil build).
+6. resources/
+Berisi view (Blade templates), asset mentah (JS/CSS/SASS), dan file lokalization/lang.
+7. routes/
+Definisi routing Laravel, umumnya file:
+**web.php:** Routing untuk aplikasi web.
+
+
+**api.php:** Routing untuk API.
+
+
+**console.php, channels.php:** Routing tambahan untuk CLI/event broadcasting.
+
+
+8. storage/
+Berisi log, cache, dan file upload.
+**app/, logs/, framework/:** Digunakan Laravel secara internal.
+
+
+9. tests/
+Folder untuk testing.
+**Feature/:** Test dari end-to-end fitur.
+
+
+Unit/: Test unit-level.
+10. laravel/
+
+---
 
 - Frontend, Backend, and Database
 
