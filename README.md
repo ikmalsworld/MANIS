@@ -43,6 +43,7 @@ Sonarcloud preferred, karena lebih praktis setup dan penggunaannya.
 
 ## Struktur Proyek
 ### Struktur file
+```
 MANIS-main/
 ├── .editorconfig
 ├── .env.example
@@ -51,88 +52,21 @@ MANIS-main/
 ├── .gitattributes
 ├── .gitignore
 ├── .php-cs-fixer.dist.php
-├── .phpmd.xml
-├── .phpstan.dist.neon
-├── .styleci.yml
-├── artisan
-├── composer.json
-├── composer.lock
-├── docker-compose-prod.yml
 ├── docker-compose.yml
-├── Dockerfile
-├── phpunit.xml
-├── sonar-project.properties
-├── vite.config.js
-├── README.md
-│
 ├── app/
-│   ├── Console/
-│   ├── Exceptions/
 │   ├── Http/
 │   │   ├── Controllers/
-│   │   ├── Middleware/
+│   │   └── Middleware/
 │   ├── Models/
-│   ├── Providers/
-│
-├── bootstrap/
-│   └── app.php
-│
+│   └── Providers/
 ├── config/
 │   ├── app.php
-│   ├── auth.php
-│   ├── broadcasting.php
-│   ├── cache.php
-│   ├── cors.php
-│   ├── database.php
-│   ├── filesystems.php
-│   ├── hashing.php
-│   ├── logging.php
-│   ├── mail.php
-│   ├── queue.php
-│   ├── services.php
-│   ├── session.php
-│   ├── view.php
-│
-├── database/
-│   ├── factories/
-│   ├── migrations/
-│   ├── seeders/
-│
-├── lang/
-│   └── en/
-│       └── validation.php
-│
-├── laravel/   ← (folder ini tidak umum, kemungkinan custom. Perlu dicek isinya lebih lanjut)
-│
-├── public/
-│   ├── index.php
-│   └── (favicon, assets publik)
-│
-├── resources/
-│   ├── css/
-│   ├── js/
-│   ├── lang/
-│   └── views/
-│       ├── layouts/
-│       └── welcome.blade.php (atau lainnya)
-│
+│   └── database.php
 ├── routes/
-│   ├── api.php
-│   ├── channels.php
-│   ├── console.php
 │   └── web.php
-│
-├── storage/
-│   ├── app/
-│   ├── framework/
-│   │   ├── cache/
-│   │   ├── sessions/
-│   │   ├── views/
-│   └── logs/
-│
-├── tests/
-    ├── Feature/
-    └── Unit/
+└── Laravel
+```
+
 
 ### Konfigurasi dan Root Files
 **.editorconfig, .gitattributes, .gitignore:** File konfigurasi umum untuk editor, Git, dan atribut file.
