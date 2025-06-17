@@ -8,7 +8,7 @@
 ### Day1
 Database tidak otomatis migrate dari local php ke docker, sehingga harus force di actions.
 
-https://github.com/ikmalsworld/MANIS/issues/5#issue-3154945616
+![Image](https://github.com/user-attachments/assets/26b53e2f-5609-4eed-b460-2571bc1d692c)
 
 https://github.com/ikmalsworld/MANIS/issues/6#issue-3154949217
 
