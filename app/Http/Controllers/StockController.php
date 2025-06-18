@@ -44,11 +44,11 @@ class StockController extends Controller
 
         $product->save();
 
-        Transaction::create([
-            'product_id' => $product->id,
-            'quantity' => $quantity,
-            'category' => $category,
-        ]);
+        // Transaction::create([
+        //     'product_id' => $product->id,
+        //     'quantity' => $quantity,
+        //     'category' => $category,
+        // ]);
 
         return redirect()->route('home');
     }
