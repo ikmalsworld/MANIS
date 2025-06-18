@@ -4,6 +4,152 @@
 `MANIS` adalah aplikasi berbasis Laravel yang dirancang untuk membantu memantau data barang, stok, dan aktivitas penambahan barang baru secara real-time. Aplikasi ini dikembangkan oleh tim kami sebagai bagian dari proyek sistem informasi modern dengan praktik CI/CD dan clean code.
 
 ---
+## Challenges Encountered
+### Day1
+Database tidak otomatis migrate dari local php ke docker, sehingga harus force di actions.
+
+![Image](https://github.com/user-attachments/assets/cf9cd328-b613-4b8d-96f8-093055ffadc3)
+
+![Image](https://github.com/user-attachments/assets/26b53e2f-5609-4eed-b460-2571bc1d692c)
+
+### Day2
+- Perlu menerapkan CD, payment method di GCP problematik sehingga harus mengganti dengan AWS.
+- Deployment ke EC2 AWS tidak berjalan lancar, solusinya dengan reset EC2.
+
+![Image](https://github.com/user-attachments/assets/9fa78bc8-b618-47d5-ab3c-c91bae9d4748)
+
+![Image](https://github.com/user-attachments/assets/5bdabb01-502f-4344-8911-7122311272c0)
+
+![Image](https://github.com/user-attachments/assets/697355dd-f99d-466d-aa72-fa8c56b1db92)
+
+### Day3
+Sonarcloud preferred, karena lebih praktis setup dan penggunaannya.
+
+![Image](https://github.com/user-attachments/assets/3ad2e86b-dcd9-4c18-a31a-22f8b8bc7190)
+
+![Image](https://github.com/user-attachments/assets/3676aab2-612b-4838-96ef-8665a58b1f6d)
+
+![Image](https://github.com/user-attachments/assets/e799cf24-6eb3-4c01-bfac-c6ee07fec07d)
+
+### Day4
+- Integrasi Prometheus Grafana membuat Sonarcloud Quality Test gagal, 0% passed.
+- Debugging Prometheus Grafana tidak berhasil, Radis dan APCU tidak kompatibel dengan PHP 8.2, perlu alternatif, solusinya Cloudwatch + SNS.
+
+![Image](https://github.com/user-attachments/assets/8df8e357-072d-4add-af62-61a41f5dfe12)
+
+![Image](https://github.com/user-attachments/assets/75686c8c-9aac-45fd-97f9-a356ad40a6d8)
+
+---
+
+## Struktur Proyek
+### Struktur file
+```
+MANIS-main/
+├── .editorconfig
+├── .env.example
+├── .env.production
+├── .env.testing
+├── .gitattributes
+├── .gitignore
+├── .php-cs-fixer.dist.php
+├── docker-compose.yml
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   └── Middleware/
+│   ├── Models/
+│   └── Providers/
+├── config/
+│   ├── app.php
+│   └── database.php
+├── routes/
+│   └── web.php
+└── Laravel
+```
+
+
+### Konfigurasi dan Root Files
+- **.editorconfig, .gitattributes, .gitignore:** File konfigurasi umum untuk editor, Git, dan atribut file.
+
+
+- **.env.example, .env.production, .env.testing:** Contoh dan versi environment variables untuk berbagai lingkungan.
+
+
+- **Dockerfile, docker-compose.yml, docker-compose-prod.yml:** Digunakan untuk containerisasi dengan Docker.
+
+
+- **README.md:** Dokumentasi proyek.
+
+
+- **artisan:** CLI tool Laravel (untuk menjalankan perintah seperti php artisan migrate, serve, dll.).
+
+
+- **composer.json, composer.lock:** Dependency manager untuk PHP (Composer).
+
+
+- **package.json:** Dependency untuk Node.js (umumnya untuk frontend asset via Vite atau Laravel Mix).
+
+
+- **phpunit.xml:** Konfigurasi untuk testing dengan PHPUnit.
+
+
+- **phpstan.neon:** Konfigurasi untuk PHPStan (static analysis).
+
+
+- **vite.config.js:** Konfigurasi bundler frontend Vite.
+
+
+- **sonar-project.properties:** Konfigurasi untuk SonarCloud (code analysis).
+
+### Folder-Folder Utama
+1. app/
+Tempat inti aplikasi Laravel:
+- **Http/:** Controller dan middleware.
+
+
+- **Models/:** Model-model database.
+
+
+- **Providers/:** Service providers Laravel.
+
+
+2. bootstrap/
+- Mengatur autoload dan bootstrapping Laravel, biasanya hanya app.php.
+3. config/
+- Berisi konfigurasi Laravel seperti app.php, database.php, mail.php, dll.
+4. database/
+- **factories/, migrations/, seeders/:** Untuk database migration, seeding, dan pembuatan dummy data.
+
+
+5. public/
+- Folder web root. Berisi index.php, asset publik (gambar, JS/CSS hasil build).
+6. resources/
+- Berisi view (Blade templates), asset mentah (JS/CSS/SASS), dan file lokalization/lang.
+7. routes/
+- Definisi routing Laravel, umumnya file:
+- **web.php:** Routing untuk aplikasi web.
+
+
+- **api.php:** Routing untuk API.
+
+
+- **console.php, channels.php:** Routing tambahan untuk CLI/event broadcasting.
+
+
+8. storage/
+   Berisi log, cache, dan file upload.
+- **app/, logs/, framework/:** Digunakan Laravel secara internal.
+
+
+9. tests/
+    Folder untuk testing.
+- **Feature/:** Test dari end-to-end fitur.
+
+
+- **Unit/:** Test unit-level.
+10. laravel/
+
+---
 
 - Frontend, Backend, and Database
 
