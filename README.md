@@ -135,36 +135,85 @@ php artisan migrate --seed
 
 ---
 
-▶️ Menjalankan Aplikasi
-```bash
-php artisan serve
-```
-Buka browser: http://localhost:8001
+## ✅ Prasyarat
 
-📊 Fitur Monitoring Barang
-Route: /monitoring-barang
-Menampilkan daftar 10 barang terakhir yang ditambahkan ke dalam sistem.
+Sebelum menjalankan aplikasi secara lokal atau mengatur CI/CD, pastikan kamu telah memenuhi beberapa kebutuhan berikut:
 
-🧪 CI/CD & Linting
-CI/CD diatur menggunakan GitHub Actions dengan langkah:
-- Instalasi PHP dan dependencies
-- Linting via Laravel Pint
-- Analisis statik via PHPStan
-- PHPCS (optional)
-- PHPUnit Test (jika ditambahkan nanti)
+### 🖥️ Perangkat
+- Laptop/PC dengan minimal:
+  - 4 core CPU
+  - RAM ≥ 8 GB
+  - Penyimpanan kosong ≥ 25 GB
 
-Contoh perintah manual untuk linting:
-```bash
-vendor/bin/pint --test
-vendor/bin/phpstan analyse
-vendor/bin/phpcs
-```
+### 🔧 Tools & Dependencies
+- Code Editor (disarankan: [Visual Studio Code](https://code.visualstudio.com/))
+- [Laravel](https://laravel.com/) (versi terbaru)
+- [MySQL](https://www.mysql.com/)
+- [Composer](https://getcomposer.org/)
+- [Docker](https://www.docker.com/)
+- [GitHub](https://github.com/) dan akses ke repository ini
+- [GitHub Actions](https://docs.github.com/en/actions) untuk CI/CD pipeline
+- [Laravel Pint](https://laravel.com/docs/11.x/pint) untuk kode styling
+- [PHPStan](https://phpstan.org/) untuk static analysis
+- [AWS CLI](https://aws.amazon.com/cli/) untuk integrasi cloud
+
+### ☁️ Cloud Integration
+- **AWS CloudWatch** – monitoring dan logging
+- **AWS SNS (Simple Notification Service)** – notifikasi otomatis
+- **[SonarCloud](https://sonarcloud.io/)** – analisis kualitas kode
+
+## 🚀 Cara Menggunakan Aplikasi
+
+### 1. Buka Aplikasi
+Akses aplikasi melalui [http://13.55.12.50/](http://13.55.12.50/)
+
+### 2. Tampilan Awal
+Di halaman utama, kamu akan melihat tiga komponen utama:
+- **Form input produk** untuk menambahkan barang baru
+- **Daftar barang** yang sudah ditambahkan
+- **Riwayat transaksi** yang mencatat seluruh aktivitas
+
+### 3. Menambahkan Produk
+- Isi nama produk pada form di pojok kiri atas
+- Masukkan jumlah stok awal
+- Klik tombol **“Tambah Produk”** untuk menyimpan
+
+### 4. Menghapus Produk
+Jika ingin menghapus produk yang sudah dimasukkan, klik tombol **“Hapus”** pada daftar barang.
+
+### 5. Manajemen Stok
+Untuk setiap produk yang ada, kamu bisa melakukan tiga jenis perubahan:
+- **➕ Penambahan Stok**: menambah jumlah produk
+- **➖ Stok Terjual**: mengurangi stok saat produk terjual
+- **♻️ Retur ke Produsen**: juga mengurangi stok, namun tercatat berbeda di riwayat
+
+### 6. Melihat Riwayat Transaksi
+Klik tombol **“Riwayat”** di kanan atas untuk melihat seluruh aktivitas transaksi.  
+Riwayat mencakup:
+- ID Transaksi
+- Nama Produk
+- Jenis Perubahan (Tambah, Terjual, Retur)
+- Jumlah
+- Waktu
+
+## 🛠 Rencana Pengembangan
+
+Berikut beberapa hal yang direncanakan untuk pengembangan ke depan:
+
+- 🔁 **Perbaikan Logic Produk Duplikat**  
+  Menyesuaikan logika penambahan produk agar nama produk yang sama tidak dianggap sebagai entri baru, melainkan otomatis menambahkan kuantitas ke produk yang sudah ada.
+
+- 👤 **Autentikasi Pengguna**  
+  Menambahkan fitur **Register** dan **Login** untuk mengamankan akses dan memungkinkan manajemen stok berdasarkan akun pengguna.
+
+- ⚡ **Optimasi CI/CD Laravel**  
+  Mempercepat proses CI/CD dengan menonaktifkan service Laravel yang tidak digunakan saat pipeline berjalan.
 
 👥 Tim Pengembang	      
-1. Muhammad Hasan Kamal
-2. Thariq Kemal Hassan     
-3. Muhammad Afaf	        
-4. Muhammad Yusuf P       
+1. Muhammad Hasan Kamal     5026221173
+2. Thariq Kemal Hassan      5026221174
+3. Muhammad Afaf	        5026221157
+4. Muhammad Yusuf P         5026221196
 
 📄 Lisensi
 Proyek ini menggunakan lisensi MIT License.
