@@ -9,6 +9,3 @@ parameters:
     - routes
     - resources/views
 
-  # Optional: you can ignore some known non-critical errors
-  ignoreErrors:
-    - '#Relation .+ is not found in .+#'
