@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StockController;
-use App\Http\Controllers\TransactionController;
+// use App\Http\Controllers\TransactionController;
 
 Route::get('/', [StockController::class, 'index'])->name('home');
 Route::post('/stocks', [StockController::class, 'store'])->name('stocks.store');
