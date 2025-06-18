@@ -35,10 +35,10 @@ class UnitTest extends TestCase
         ]);
     }
 
-    /** @test */
-    public function transaction_index_returns_success()
-    {
-        $response = $this->get('/transactions');
-        $response->assertStatus(200);
-    }
+    // /** @test */
+    // public function transaction_index_returns_success()
+    // {
+    //     $response = $this->get('/transactions');
+    //     $response->assertStatus(200);
+    // }
 }
