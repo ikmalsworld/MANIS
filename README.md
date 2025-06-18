@@ -94,45 +94,54 @@ Proses perilisan aplikasi ke server produksi AWS EC2 agar dapat diakses pengguna
 
 ## 🧰 Teknologi yang Digunakan
 
-| Teknologi     | Deskripsi                            |
-|---------------|--------------------------------------|
-| Laravel       | Backend framework utama              |
-| MySQL         | Database default                     |
-| GitHub Actions| CI/CD pipeline                       |
-| Laravel Pint  | Code style linter                    |
-| PHPStan       | Static analysis                      |
-| Composer/NPM  | Dependency management                |
+| Teknologi              | Deskripsi                                    |
+|------------------------|----------------------------------------------|
+| Laravel                | Backend framework utama                      |
+| MySQL (Docker)         | Database yang dijalankan dalam container     |
+| GitHub Actions         | CI/CD pipeline otomatis                      |
+| Laravel Pint           | Code style linter untuk Laravel              |
+| PHPStan                | Static analysis tool untuk kode PHP          |
+| Composer               | Manajemen dependency untuk PHP               |
+| Docker & Docker Compose| Untuk environment lokal dan production-ready |
 
 ---
 
 ## 📦 Instalasi dan Setup Lokal
 
 ### 1. Clone Repo
+
 ```bash
 git clone https://github.com/ikmalsworld/MANIS.git
 cd MANIS
 ```
 
-### 2. Install Dependency
-```bash
-composer install
-npm install && npm run dev
-```
-
-### 3. Copy dan Konfigurasi .env
+### 2. Copy dan konfigurasi env
 ```bash
 cp .env.example .env
+```
+Edit file .env untuk mengatur koneksi database, lalu:
+```bash
+docker compose exec app php artisan key:generate
+```
+
+### 3. Jalankan Docker dengan Compose
+```bash
+docker compose -f docker-compose-prod.yml up -d --build
 ```
 Edit file .env untuk mengatur koneksi database, lalu:
 ```bash
 php artisan key:generate
 ```
 
-### 4. Jalankan Migrasi dan Seeder
+### 4. Install Dependency Backend
 ```bash
-php artisan migrate --seed
+docker compose exec app composer install
 ```
 
+### Jalankan Migrasi dan Seeder
+```bash
+docker compose exec app php artisan migrate --seed
+```
 ---
 
 ## ✅ Prasyarat
